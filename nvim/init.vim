@@ -2,6 +2,7 @@ set runtimepath+=~/.vim,~/.vim/after
 set packpath+=~/.vim
 source ~/.config/.vimrc
 let g:python3_host_prog = '/usr/bin/python3'
+set mouse=a
 "let g:chromatica#enable_at_startup=1
 "let g:chromatica#highlight_feature_level=1
 call plug#begin('~/.local/share/nvim/plugged')
@@ -16,8 +17,10 @@ Plug 'YorickPeterse/happy_hacking.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'Raimondi/delimitMate'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'arakashic/chromatica.nvim'
+Plug 'octol/vim-cpp-enhanced-highlight'
+"Plug 'ludovicchabant/vim-gutentags'
+"Plug 'bbchung/Clamp'
+"Plug 'arakashic/chromatica.nvim'
 call plug#end()
 
 set background=dark

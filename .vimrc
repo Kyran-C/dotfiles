@@ -1,29 +1,58 @@
 let mapleader="\<space>"
 "nmap <Space> <leader>
+set title
 set timeoutlen=150
 set relativenumber number
-"set t_Co=256
- 
+set tabstop=4
+set shiftwidth=4
+set foldmethod=syntax
+set foldminlines=1
+set nofoldenable
+" keep cursor centered in view
+set scrolloff=999
+set sidescrolloff=999
+set nowrap
+set nosmarttab
+
 " == EasyMotion ==
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
 map <space>f <Plug>(easymotion-s)
 
 " == Reload .vimrc ==
-noremap <c-w> :source ~/.config/.vimrc<CR>
-noremap <M-r> :source ~/.config/.vimrc<CR>
+noremap <F15>r :source ~/.config/.vimrc<CR>
 
+" == Tabs ==
+nnoremap  :tabnew<CR>
+nnoremap  :tabclose<CR>
+nnoremap <F13><LTab> :tabnext<CR>
+nnoremap <F14><LTab> :tabprevious<CR>
+
+" == Saving ==
 nnoremap <c-s> :w<CR>
 inoremap <c-s> <Esc>:w<CR>a
 
+" == Jump List ==
+nnoremap g, <c-o>
+nnoremap g. <c-i>
+
 " prevent ctrl space from interfering
 nnoremap <c-space> <nop>
+nnoremap g; <nop>
 
+" == Marks ==
+nnoremap ' `
+nnoremap ` '
+"        alt-' to create mark
+nnoremap <F15>' m
+
+" == Escape ==
 inoremap jk <Esc>`^
 inoremap kj <Esc>`^
 vnoremap jk <Esc>
 vnoremap kj <Esc>
 
+" == Undo/Redo ==
 noremap <c-z> <undo>
 inoremap <c-z> <Esc><undo>i
 noremap <c-r> <c-R>
@@ -65,14 +94,19 @@ noremap <F17>k <c-w>3-
 noremap <F17>l <c-w>3+
 noremap <F17>j <c-w>3<
 noremap <F17>; <c-w>3>
-"       ctrl -/+ maximises/minimizes
-noremap <F14>+ <c-w>_<c-w><bar>      
+"       ctrl-shift moves
+noremap <F14>j <c-w>r
+noremap <F14><coln> <c-w>R
+noremap <F14>k <c-w>x
+noremap <F14>l <c-w>X
+"       ctrl-+ maximises (and recenters window on cursor)
+noremap <F14>+ <c-w>_<c-w><bar>zz      
 
 " == Next/Previous Occurance ==
 noremap h n
 noremap H N
 " clear highlighted search
-nnoremap <esc> :noh<return><esc>
+nnoremap <silent> <esc> :noh<return><esc>
 
 " == Find/Till ==
 noremap y f
@@ -109,6 +143,8 @@ onoremap D d
 vnoremap D d
 nnoremap d "_d
 vnoremap d "_d
+noremap x "_x
+noremap X "_X
 
 " == Inner/Outer ==
 onoremap a a
@@ -131,9 +167,13 @@ noremap P W
 
 " == Move within a line ==
 nnoremap gj ^
+vnoremap gj ^
 nnoremap g; g_
+vnoremap g; g_
 nnoremap gJ 0
+vnoremap gJ 0
 nnoremap g: $
+vnoremap g: $
 
 onoremap gj ^
 onoremap g; g_
@@ -145,6 +185,52 @@ nnoremap gk gg
 nnoremap gl G
 onoremap gk gg
 onoremap gl G
+
+" == Move to braces/parentheses ==
+"        alt moves to next open/close brace
+nnoremap <F15>] ]}
+nnoremap <F15>[ [{
+"        alt-shift moves to previous open/close brace
+nnoremap <F16>} ]{
+nnoremap <F16>{ [}
+"     == operator pending mappings ==
+onoremap <F15>] ]}
+onoremap <F16>} [}
+onoremap <F15>[ ]{
+onoremap <F16>{ [{
+"        alt moves to next open/close parenthesis
+nnoremap <F15>0 ])
+nnoremap <F15>9 ](
+"        alt-shift moves to previous open/close parenthesis
+nnoremap <F16>) [)
+nnoremap <F16>( [(
+"     == operator pending mappings ==
+onoremap <F15>0 ])
+onoremap <F15>9 ](
+onoremap <F16>) [)
+onoremap <F16>( [(
+
+"noremap <silent> <F15>o /}<CR>:noh<CR>
+"noremap <silent> <F15>p /{<CR>:noh<CR>
+"noremap <silent> <F15>i ?{<CR>:noh<CR>
+"noremap <silent> <F15>u ?}<CR>:noh<CR>
+
+noremap <silent> <F15>o /{<CR>:noh<CR>
+noremap <silent> <F15>p /{<CR>:noh<CR>%
+noremap <silent> <F15>i ?}<CR>:noh<CR>
+noremap <silent> <F15>u ?}<CR>:noh<CR>%
+
+" == Move to start/end of method ==
+"noremap <F15>o j0[[%/{<CR>
+"noremap <F15>p /}<CR>b99]}
+"noremap <F15>i ?{<CR>w99[{ 
+"noremap <F15>u k$][%?}<CR>
+
+"       alt-shift for parentheses
+"noremap <F16>o ])
+"noremap <F16>p ](
+"noremap <F16>i [(
+"noremap <F16>u [)
 
 " == Insert on line above/below ==  
 nnoremap <leader>l o
@@ -159,10 +245,6 @@ nnoremap <F13><spc> myV:move '<-2<CR><Esc>`y
 nnoremap <F13><spc> myV:move '>+1<CR><Esc>`y
 vnoremap <F13><spc> :move '<-2<CR><Esc>gv
 vnoremap <F13><spc> :move '>+1<CR><Esc>gv
-
-" == Marks ==
-" should be remapped to shift-number
-nnoremap e m
 
 " == Repeat last action ==
 nnoremap a .

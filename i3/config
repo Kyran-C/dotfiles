@@ -53,6 +53,8 @@ bindsym Mod4+Mod1+Return exec urxvt
 bindsym Mod4+Mod1+x exec urxvt -e nvim /home/kyran/.config/X11/Xresources
 bindsym Mod4+Mod1+v exec urxvt -e nvim /home/kyran/.config/.vimrc
 
+bindsym Mod4+Shift+P exec firefox -private-window
+
 # kill focused window
 bindsym Mod4+Shift+q kill
 
