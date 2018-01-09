@@ -9,11 +9,13 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
+background-focused-workspace = #60222222
+background-alt = #00dfdfdf
 background = #AF222222
-background-alt = #444
 ;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
-foreground-alt = #555
+foreground-alt = #444
+foreground-focused-workspace = #dfdfdf
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
@@ -56,14 +58,15 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = DejaVu:pixelsize=10;1
 font-3 = FontAwesome:size=10;3
 
-modules-left = powermenu i3
-modules-center = xwindow
+modules-left = powermenu i3 xwindow
+modules-center = 
 modules-right = memory cpu temperature volume battery date 
 
 tray-position = right
 tray-padding = 2
 tray-transparent = true
 tray-background = ${colors.background}
+
 
 ;wm-restack = bspwm
 ;wm-restack = i3
@@ -78,7 +81,7 @@ tray-background = ${colors.background}
 
 [module/xwindow]
 type = internal/xwindow
-label = %{F#666}%{F-}  %title:0:70:...%
+label = "                                                     %{F#666}%{F-}  %title:0:70:...%"
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -140,7 +143,8 @@ label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
 label-focused = %index%
-label-focused-background = ${module/bspwm.label-focused-background}
+label-focused-background = ${colors.background-focused-workspace}
+label-focused-foreground = ${colors.foreground-focused-workspace}
 label-focused-underline = ${module/bspwm.label-focused-underline}
 label-focused-padding = ${module/bspwm.label-focused-padding}
 
@@ -351,10 +355,18 @@ type = custom/menu
 
 format-spacing = 1
 
-label-open = 
-label-open-foreground = ${colors.secondary}
-label-close =  cancel
-label-close-foreground = ${colors.secondary}
+label-open-font = 4
+label-close-font = 4
+label-font = 4
+menu-0-font = 4
+menu-1-font = 4
+menu-2-font = 4
+
+;label-open = 
+label-open = 
+label-open-foreground = #AAAAAA
+label-close = 
+label-close-foreground = #AAAAAA 
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
 
@@ -369,7 +381,7 @@ menu-1-1 = reboot
 menu-1-1-exec = sudo reboot
 
 menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
+menu-2-0-exec = shutdown -h now
 menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
 

@@ -15,9 +15,16 @@ Plug 'tlhr/anderson.vim'
 Plug 'YorickPeterse/happy_hacking.vim'
 
 Plug 'itchyny/lightline.vim'
-Plug 'easymotion/vim-easymotion'
-Plug 'Raimondi/delimitMate'
+Plug 'scrooloose/nerdtree'
+Plug 'thaerkh/vim-workspace'
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'lyuts/vim-rtags'
+Plug 'Raimondi/delimitMate'
+Plug 'easymotion/vim-easymotion'
+" Plug 'bkad/CamelCaseMotion'
+Plug 'chaoren/vim-wordmotion'
+Plug 'tpope/vim-commentary'
+Plug 'dbgx/lldb.nvim'
 "Plug 'ludovicchabant/vim-gutentags'
 "Plug 'bbchung/Clamp'
 "Plug 'arakashic/chromatica.nvim'
@@ -30,7 +37,7 @@ colorscheme gruvbox
 let g:lightline = { 'colorscheme': 'neodark' }
 set noshowmode
 "set termguicolors
-
+let g:workspace_autosave_untrailspaces = 0
 "let g:chromatica#highlight_feature_level=1
 
 "source ~/.config/nvim/cppsyntax.vim

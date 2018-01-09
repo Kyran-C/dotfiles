@@ -16,6 +16,7 @@ rofi.bw: 1
 rofi.line-margin: 0
 rofi.lines: 5
 rofi.font: System San Francisco Display 10
+rofi.matching: fuzzy
 
 Xft.dpi:        96
 Xft.antialias:  true
@@ -35,6 +36,9 @@ URxvt.font: xft:Anka/Coder Condensed:size=8:antialias=true
 URxvt.meta8: false
 URxvt.modifier: alt
 URxvt.scrollBar: false
+URxvt.saveLines: 99999
+URxvt.perl-ext:
+URxvt.perl-ext-common:
 
 *foreground:   #ABB2BF
 *background:   #282C34
@@ -170,14 +174,14 @@ URxvt.keysym.M-H                : \033[29~h
 URxvt.keysym.C-M-h              : \033[31~h
 URxvt.keysym.C-M-H              : \033[32~h
 
-!URxvt.keysym.C-i                : \033[25~i
+URxvt.keysym.C-i                : \033[25~i
 URxvt.keysym.C-I                : \033[26~i
 URxvt.keysym.M-i                : \033[28~i
 URxvt.keysym.M-I                : \033[29~i
 URxvt.keysym.C-M-i              : \033[31~i
 URxvt.keysym.C-M-I              : \033[32~i
 
-!URxvt.keysym.C-j                : \033[25~j
+URxvt.keysym.C-j                : \033[25~j
 URxvt.keysym.C-J                : \033[26~j
 URxvt.keysym.M-j                : \033[28~j
 URxvt.keysym.M-J                : \033[29~j
@@ -212,7 +216,7 @@ URxvt.keysym.M-N                : \033[29~n
 URxvt.keysym.C-M-n              : \033[31~n
 URxvt.keysym.C-M-N              : \033[32~n
 
-!URxvt.keysym.C-o                : \033[25~o
+URxvt.keysym.C-o                : \033[25~o
 URxvt.keysym.C-O                : \033[26~o
 URxvt.keysym.M-o                : \033[28~o
 URxvt.keysym.M-O                : \033[29~o
@@ -276,7 +280,8 @@ URxvt.keysym.C-M-w              : \033[31~w
 URxvt.keysym.C-M-W              : \033[32~w
 
 !URxvt.keysym.C-x                : \033[25~x
-URxvt.keysym.C-X                : \033[26~x
+! Ctrl-shift doesn't work
+URxvt.keysym.C-X                : \033[26~X
 URxvt.keysym.M-x                : \033[28~x
 URxvt.keysym.M-X                : \033[29~x
 URxvt.keysym.C-M-x              : \033[31~x

@@ -13,9 +13,11 @@
 # is used in the bar {} block below.
 font pango:System San Francisco 0
 # class                 border  backgr. text    indicator child_border
-client.focused          #36000A #840018 #ffffff #2e9ef4   #285577
-client.focused_inactive #840018 #36000A #ffffff #484e50   #5f676a
-client.unfocused        #36000A #36000A #888888 #292d2e   #222222
+#client.focused          #36000A #840018 #ffffff #2e9ef4   #285577
+#client.focused_inactive #840018 #36000A #ffffff #484e50   #5f676a
+client.focused          #363636 #898470 #ffffff #2e9ef4   #285577
+client.focused_inactive #898470 #363636 #ffffff #484e50   #5f676a
+client.unfocused        #363636 #363636 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 client.background       #ffffff
@@ -46,12 +48,12 @@ set $right semicolon
 floating_modifier Mod4
 
 # start a terminal
-bindsym Mod4+Return exec tilix
+#bindsym Mod4+Return exec tilix
 bindsym Mod4+Shift+Return exec tilix --quake
-bindsym Mod4+Mod1+Return exec urxvt
+bindsym Mod4+Return exec urxvtc
 
-bindsym Mod4+Mod1+x exec urxvt -e nvim /home/kyran/.config/X11/Xresources
-bindsym Mod4+Mod1+v exec urxvt -e nvim /home/kyran/.config/.vimrc
+bindsym Mod4+Mod1+x exec urxvtc -e nvim /home/kyran/.config/X11/Xresources
+bindsym Mod4+Mod1+v exec urxvtc -e nvim /home/kyran/.config/.vimrc
 
 bindsym Mod4+Shift+P exec firefox -private-window
 
@@ -134,6 +136,7 @@ bindsym Mod4+Shift+minus move scratchpad
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym Mod4+minus scratchpad show
+bindsym Mod4+Shift+plus sticky toggle
 
 # switch to workspace
 bindsym Mod4+1 workspace 1
@@ -163,6 +166,7 @@ bindsym Mod4+Shift+0 move container to workspace 10
 bindsym Mod4+Tab workspace next
 bindsym Mod4+Shift+Tab workspace prev 
 
+bindsym Mod4+grave workspace back_and_forth
 # reload the configuration file
 bindsym Mod4+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3https://www.youtube.com/watch?v=Jvmoux8BnSY)
@@ -231,15 +235,22 @@ bindsym Mod4+Ctrl+Mod1+$Left  resize shrink width  5 px or 1 ppt
 for_window [class="^.*"] border pixel 0
 new_window 1pixel
 # bindsym Mod4+x border none
-exec_always --no-startup-id twmnd
+
+
+# adjust key repeat and delay
+exec --no-startup-id xset r rate 240 35
+
+exec --no-startup-id urxvtd -q -o -f
+
+exec --no-startup-id twmnd
 #exec_always --no-startup-id feh --bg-scale /home/kyran/Wallpapers/wallpaper.png
 #exec_always --no-startup-id feh --bg-tile /home/kyran/Wallpapers/wallpaper-tile.png
 #exec_always --no-startup-id feh --bg-center /home/kyran/Wallpapers/tricolor.png
 #exec_always --no-startup-id feh --bg-center /home/kyran/Wallpapers/EclipseHighway.jpeg
 #exec_always --no-startup-id feh --bg-scale /home/kyran/Wallpapers/CyanMagenta.jpeg
-exec_always --no-startup-id feh --bg-scale /home/kyran/Wallpapers/SunsetPowerlines.jpeg
+#exec_always --no-startup-id feh --bg-scale /home/kyran/Wallpapers/SunsetPowerlines.jpeg
+exec_always --no-startup-id feh --bg-scale /home/kyran/Wallpapers/wallhaven-299643.png
 exec --no-startup-id pulseaudio --start
-#exec NetworkManager
 exec --no-startup-id nm-applet
 exec --no-startup-id compton -f
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
