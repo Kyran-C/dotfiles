@@ -49,8 +49,9 @@ floating_modifier Mod4
 
 # start a terminal
 #bindsym Mod4+Return exec tilix
-bindsym Mod4+Shift+Return exec tilix --quake
+#bindsym Mod4+Shift+Return exec tilix --quake
 bindsym Mod4+Return exec urxvtc
+bindsym Mod4+r exec urxvtc -e ranger
 
 bindsym Mod4+Mod1+x exec urxvtc -e nvim /home/kyran/.config/X11/Xresources
 bindsym Mod4+Mod1+v exec urxvtc -e nvim /home/kyran/.config/.vimrc
@@ -198,7 +199,7 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-bindsym Mod4+r mode "resize"
+#bindsym Mod4+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)

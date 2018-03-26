@@ -2,6 +2,7 @@ set runtimepath+=~/.vim,~/.vim/after
 set packpath+=~/.vim
 source ~/.config/.vimrc
 let g:python3_host_prog = '/usr/bin/python3'
+let g:python2_host_prog = '/usr/bin/python3'
 set mouse=a
 "let g:chromatica#enable_at_startup=1
 "let g:chromatica#highlight_feature_level=1
@@ -18,7 +19,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'thaerkh/vim-workspace'
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'lyuts/vim-rtags'
+"Plug 'lyuts/vim-rtags'
 Plug 'Raimondi/delimitMate'
 Plug 'easymotion/vim-easymotion'
 " Plug 'bkad/CamelCaseMotion'

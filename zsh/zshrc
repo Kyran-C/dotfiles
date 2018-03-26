@@ -30,11 +30,17 @@ function zle-line-init zle-keymap-select zle-line-finish {
 }
 zle -N zle-line-init
 zle -N zle-keymap-select
+
+alias update="pacaur -Syu --noconfirm --noedit"
+
 export KEYTIMEOUT=2
 bindkey kj vi-cmd-mode
 bindkey jk vi-cmd-mode
 bindkey -M visual 'kj' deactivate-region
 bindkey -M visual 'jk' deactivate-region
+
+#bindkey "<BS>" backward-delete-char
+#bindkey "<Del>" delete-char
 
 bindkey -M vicmd '^z' undo
 bindkey -M vicmd '^r' redo
@@ -106,3 +112,4 @@ NEWLINE=$'\n'
 PS1="${NEWLINE}%F{246}%n:%m%f %F{250}%K{234} %~ %k%f ${NEWLINE} %F{130}➤%f  "
 export VISUAL=/usr/bin/nvim
 export EDITOR="$VISUAL"
+export RANGER_LOAD_DEFAULT_RC=FALSE

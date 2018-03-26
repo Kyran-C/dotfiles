@@ -178,6 +178,7 @@ noremap <leader>n i<Space><Esc>
 
 " == Change ==
 noremap f "_c
+onoremap f c
 vnoremap f "_c
 
 
