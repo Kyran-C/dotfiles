@@ -1,3 +1,4 @@
+let termcompatibility = $VIM_TERM_COMPAT
 let mapleader="\<space>"
 "nmap <Space> <leader>
 set title
@@ -17,19 +18,283 @@ set nosmarttab
 set inccommand=split
 "set cursorline
 
+" == Mapping functions ==
+"    == Shift ==
+function NMapShift( character, target )
+	if g:termcompatibility
+		exec ":nnoremap <F19>" . a:character . " " . a:target
+	else
+		exec ":nnoremap <S-" . a:character . "> " . a:target
+	endif
+endfunction
+
+"    == Ctrl ==
+function MapCtrl( character, target )
+	if g:termcompatibility
+		exec "inoremap <F13>" . a:character . " " . a:target
+	else
+		exec "inoremap <C-" . a:character . "> " . a:target
+	endif
+endfunction
+
+function IMapCtrl( character, target )
+	if g:termcompatibility
+		exec ":inoremap <F13>" . a:character . " " . a:target
+	else
+		exec ":inoremap <C-" . a:character . "> " . a:target
+	endif
+endfunction
+
+function NMapCtrl( character, target )
+	if g:termcompatibility
+		exec ":nnoremap <F13>" . a:character . " " . a:target
+	else
+		exec ":nnoremap <C-" . a:character . "> " . a:target
+	endif
+endfunction
+
+function OMapCtrl( character, target )
+	if g:termcompatibility
+		exec ":onoremap <F13>" . a:character . " " . a:target
+	else
+		exec ":onoremap <C-" . a:character . "> " . a:target
+	endif
+endfunction
+
+function CMapCtrl( character, target )
+	if g:termcompatibility
+		exec ":cnoremap <F13>" . a:character . " " . a:target
+	else
+		exec ":cnoremap <C-" . a:character . "> " . a:target
+	endif
+endfunction
+
+function VMapCtrl( character, target )
+	if g:termcompatibility
+		exec ":vnoremap <F13>" . a:character . " " . a:target
+	else
+		exec ":vnoremap <C-" . a:character . "> " . a:target
+	endif
+endfunction
+
+"    == Ctrl Shift ==
+function MapCtrlShift( character, target )
+	if g:termcompatibility
+		exec ":noremap <F14>" . a:character . " " . a:target
+	else
+		exec ":noremap <C-S-" . a:character . "> " . a:target
+	endif
+endfunction
+
+function IMapCtrlShift( character, target )
+	if g:termcompatibility
+		exec ":inoremap <F14>" . a:character . " " . a:target
+	else
+		exec ":inoremap <C-S-" . a:character . "> " . a:target
+	endif
+endfunction
+
+function NMapCtrlShift( character, target )
+	if g:termcompatibility
+		exec ":nnoremap <F14>" . a:character . " " . a:target
+	else
+		exec ":nnoremap <C-S-" . a:character . "> " . a:target
+	endif
+endfunction
+
+function OMapCtrlShift( character, target )
+	if g:termcompatibility
+		exec ":onoremap <F14>" . a:character . " " . a:target
+	else
+		exec ":onoremap <C-S-" . a:character . "> " . a:target
+	endif
+endfunction
+
+function CMapCtrlShift( character, target )
+	if g:termcompatibility
+		exec ":cnoremap <F14>" . a:character . " " . a:target
+	else
+		exec ":cnoremap <C-S-" . a:character . "> " . a:target
+	endif
+endfunction
+
+function VMapCtrlShift( character, target )
+	if g:termcompatibility
+		exec ":vnoremap <F14>" . a:character . " " . a:target
+	else
+		exec ":vnoremap <C-S-" . a:character . "> " . a:target
+	endif
+endfunction
+
+"    == Alt ==
+function MapAlt( character, target )
+	if g:termcompatibility
+		exec ":noremap <F15>" . a:character . " " . a:target
+	else
+		exec ":noremap <M-" . a:character . "> " . a:target
+	endif
+endfunction
+
+function IMapAlt( character, target )
+	if g:termcompatibility
+		exec ":inoremap <F15>" . a:character . " " . a:target
+	else
+		exec ":inoremap <M-" . a:character . "> " . a:target
+	endif
+endfunction
+
+function NMapAlt( character, target )
+	if g:termcompatibility
+		exec ":nnoremap <F15>" . a:character . " " . a:target
+	else
+		exec ":nnoremap <M-" . a:character . "> " . a:target
+	endif
+endfunction
+
+function NMapAltPrefix( prefix, character, target )
+	if g:termcompatibility
+		exec ":nnoremap " . a:prefix . "<F15>" . a:character . " " . a:target
+	else
+		exec ":nnoremap <M-" . a:character . "> " . a:target
+	endif
+endfunction
+
+function OMapAlt( character, target )
+	if g:termcompatibility
+		exec ":onoremap <F15>" . a:character . " " . a:target
+	else
+		exec ":onoremap <M-" . a:character . "> " . a:target
+	endif
+endfunction
+
+function CMapAlt( character, target )
+	if g:termcompatibility
+		exec ":cnoremap <F15>" . a:character . " " . a:target
+	else
+		exec ":cnoremap <M-" . a:character . "> " . a:target
+	endif
+endfunction
+
+function VMapAlt( character, target )
+	if g:termcompatibility
+		exec ":vnoremap <F15>" . a:character . " " . a:target
+	else
+		exec ":vnoremap <M-" . a:character . "> " . a:target
+	endif
+endfunction
+
+"    == Alt Shift ==
+function MapAltShift( character, target )
+	if g:termcompatibility
+		exec ":noremap <F16>" . a:character . " " . a:target
+	else
+		exec ":noremap <M-S-" . a:character . "> " . a:target
+	endif
+endfunction
+
+function IMapAltShift( character, target )
+	if g:termcompatibility
+		exec ":inoremap <F16>" . a:character . " " . a:target
+	else
+		exec ":inoremap <M-S-" . a:character . "> " . a:target
+	endif
+endfunction
+
+function NMapAltShift( character, target )
+	if g:termcompatibility
+		exec ":nnoremap <F16>" . a:character . " " . a:target
+	else
+		exec ":nnoremap <M-S-" . a:character . "> " . a:target
+	endif
+endfunction
+
+function OMapAltShift( character, target )
+	if g:termcompatibility
+		exec ":onoremap <F16>" . a:character . " " . a:target
+	else
+		exec ":onoremap <M-S-" . a:character . "> " . a:target
+	endif
+endfunction
+
+function CMapAltShift( character, target )
+	if g:termcompatibility
+		exec ":cnoremap <F16>" . a:character . " " . a:target
+	else
+		exec ":cnoremap <M-S-" . a:character . "> " . a:target
+	endif
+endfunction
+
+function VMapAltShift( character, target )
+	if g:termcompatibility
+		exec ":vnoremap <F16>" . a:character . " " . a:target
+	else
+		exec ":vnoremap <M-S-" . a:character . "> " . a:target
+	endif
+endfunction
+
+"    == Ctrl Alt ==
+function MapCtrlAlt( character, target )
+	if g:termcompatibility
+		exec ":noremap <F17>" . a:character . " " . a:target
+	else
+		exec ":noremap <C-M-" . a:character . "> " . a:target
+	endif
+endfunction
+
+function IMapCtrlAlt( character, target )
+	if g:termcompatibility
+		exec ":inoremap <F17>" . a:character . " " . a:target
+	else
+		exec ":inoremap <C-M-" . a:character . "> " . a:target
+	endif
+endfunction
+
+function NMapCtrlAlt( character, target )
+	if g:termcompatibility
+		exec ":nnoremap <F17>" . a:character . " " . a:target
+	else
+		exec ":nnoremap <C-M-" . a:character . "> " . a:target
+	endif
+endfunction
+
+function OMapCtrlAlt( character, target )
+	if g:termcompatibility
+		exec ":onoremap <F17>" . a:character . " " . a:target
+	else
+		exec ":onoremap <C-M-" . a:character . "> " . a:target
+	endif
+endfunction
+
+function CMapCtrlAlt( character, target )
+	if g:termcompatibility
+		exec ":cnoremap <F17>" . a:character . " " . a:target
+	else
+		exec ":cnoremap <C-M-" . a:character . "> " . a:target
+	endif
+endfunction
+
+function VMapCtrlAlt( character, target )
+	if g:termcompatibility
+		exec ":vnoremap <F17>" . a:character . " " . a:target
+	else
+		exec ":vnoremap <C-M-" . a:character . "> " . a:target
+	endif
+endfunction
+
+inoremap <c-s> <Esc>:w<CR>a
 " == EasyMotion ==
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
 map <space>f <Plug>(easymotion-s)
 
 " == Reload .vimrc ==
-noremap <F15>r :source ~/.config/.vimrc<CR>
+:call MapAlt( "<F15>r", ":source ~/.config/.vimrc<CR>" )
 
 " == Tabs ==
 nnoremap  :tabnew<CR>
 nnoremap  :tabclose<CR>
-nnoremap <F13><LTab> :tabnext<CR>
-nnoremap <F14><LTab> :tabprevious<CR>
+:call NMapCtrl( "<LTab>", ":tabnext<CR>" )
+:call NMapCtrlShift( "<LTab>", ":tabprevious<CR>" )
 noremap <M-Left>  :-tabmove<cr>
 noremap <M-Right> :+tabmove<cr>
 
@@ -45,34 +310,34 @@ nnoremap zl zr
 "nnoremap <F15>z<F15>j zC
 "nnoremap <F15>z<F15>k zM
 "nnoremap <F15>z<F15>l zR
-nnoremap z<F15>; zO
-nnoremap z<F15>j zC
-nnoremap z<F15>k zM
-nnoremap z<F15>l zR
+:call NMapAltPrefix( "z", ";", "z0" )
+:call NMapAltPrefix( "z", "j", "zC" )
+:call NMapAltPrefix( "z", "k", "zM" )
+:call NMapAltPrefix( "z", "l", "zR" )
 
 " == Saving ==
 nnoremap <c-s> :w<CR>
-inoremap <c-s> <Esc>:w<CR>a
 
 " == Snippets for auto-formatting curly braces and parens ==
-inoremap <F14>{ {<CR><Tab><CR>}<Esc>k_a<BS>
-inoremap <F14>( (  )<Esc>hi
-inoremap <F14>) (  )<Esc>hi
+"inoremap <F14>{ {<CR><Tab><CR>}<Esc>k_a<BS>
+:call IMapCtrlShift( "{", "{<CR><Tab><CR>}<Esc>k_a<BS>" )
+:call IMapCtrlShift( "(", "(  )<Esc>hi" )
+:call IMapCtrlShift( ")", "(  )<Esc>hi" )
 
 " == Snippet to map alt-space to underscore
-inoremap <F15><spc> _
-cnoremap <F15><spc> _
+:call IMapAlt( "<spc>", "_" )
+:call CMapAlt( "<spc>", "_" )
 " == alt-. to "->"
-inoremap <F15>. ->
+:call IMapAlt( ".", "->" )
 " == ctrl-space to " | "
-inoremap <F13><spc> <space><space><Esc>i
+:call IMapCtrl( "<spc>", "<space><space><Esc>i" )
 " == alt-; adds a semicolon at the end of the line
-inoremap <F15>; <Esc>myA;<Esc>`ya
-nnoremap <F15>; myA;<Esc>`y
+:call IMapAlt( ";", "<Esc>myA;<Esc>`ya" )
+:call NMapAlt( ";", "myA;<Esc>`y" )
 
 " == Toggle Commenting ==
-nmap <F15>/ <Plug>CommentaryLine 
-vmap <F15>/ <Plug>CommentaryLine
+:call NMapAlt( "/", "<Plug>CommentaryLine" )
+:call VMapAlt( "/", "<Plug>CommentaryLine" )
 
 " == Jump List ==
 nnoremap g, <c-o>
@@ -86,7 +351,9 @@ nnoremap g; <nop>
 nnoremap ' `
 nnoremap ` '
 "        alt-' to create mark
-nnoremap <F15>' m
+"        (redundant mappings since mapping function doesn't seem to work with ')
+	nnoremap <F15>' m
+	nnoremap <M-'> m
 
 " == Escape ==
 inoremap jk <Esc>`^
@@ -105,7 +372,7 @@ nnoremap s v
 vnoremap s v
 nnoremap S V
 vnoremap S V
-nnoremap <F16>s <c-V>
+:call NMapAltShift( "s", "<c-V>" )
 
 " remap directional keys
 noremap j h
@@ -120,39 +387,39 @@ onoremap j h
 onoremap k k
 onoremap l j
 onoremap ; l
-inoremap <F13>j h
+:call IMapCtrl( "j", "h" )
 inoremap  k
 inoremap  j
-inoremap <F13>; l
+:call IMapCtrl( ";", "l" )
 
 " == Window Splits ==
 set winminheight=0
 noremap <c-h> :vsp 
 noremap <c-v> :sp 
-noremap <F14>h :vsp<CR>
-noremap <F14>v :sp<CR>
+:call MapCtrlShift( "h", ":vsp<CR>" )
+:call MapCtrlShift( "v", ":sp<CR>" )
 "       ctrl focuses adjacent splits
-noremap <F13>j <c-w>h
+:call MapCtrl( "j", "<c-w>h" )
 noremap <c-k> <c-w>k
 noremap <c-l> <c-w>j
-noremap <F13>; <c-w>l
+:call MapCtrl( ";", "<c-w>l" )
 "       ctrl-alt resizes
-noremap <F17>k <c-w>4-
-noremap <F17>l <c-w>4+
-noremap <F17>j <c-w>4<
-noremap <F17>; <c-w>4>
+:call MapCtrlAlt( "k", "<c-w>4-" )
+:call MapCtrlAlt( "l", "<c-w>4+" )
+:call MapCtrlAlt( "j", "<c-w>4<" )
+:call MapCtrlAlt( ";", "<c-w>4>" )
 "       ctrl-shift moves
-noremap <F14>j <c-w>H
-noremap <F14><coln> <c-w>L
-noremap <F14>k <c-w>K
-noremap <F14>l <c-w>J
+:call MapCtrlShift( "j", "<c-w>H" )
+:call MapCtrlShift( "<coln>", "<c-w>L" )
+:call MapCtrlShift( "k", "<c-w>K" )
+:call MapCtrlShift( "l", "<c-w>J" )
 "       ctrl-shift moves
 "noremap <F14>j <c-w>r
 "noremap <F14><coln> <c-w>R
 "noremap <F14>k <c-w>x
 "noremap <F14>l <c-w>X
 "       ctrl-+ maximises (and recenters window on cursor)
-noremap <F14>+ <c-w>_<c-w><bar>zz      
+:call MapCtrlShift( "+", "<c-w>_<c-w><bar>zz")      
 
 " == Next/Previous Occurance ==
 noremap h n
@@ -201,7 +468,7 @@ noremap x "_x
 noremap X "_X
 " ctrl x deletes, alt x backspaces
 inoremap  "_x
-inoremap <F15>x "_X
+:call IMapAlt( "x", "\"_X" )
 
 " == Inner/Outer ==
 onoremap a a
@@ -217,18 +484,18 @@ noremap i b
 noremap o e
 noremap p w
 inoremap  hgel
-inoremap <F13>i b
-inoremap <F13>o el
+:call IMapCtrl( "i", "b" )
+:call IMapCtrl( "o", "el" )
 inoremap  w
 " == WORD-wise movements ==
 noremap U gE
 noremap I B
 noremap O E
 noremap P W
-inoremap <F14>u gE
-inoremap <F14>i B
-inoremap <F14>o E
-inoremap <F14>p W
+:call IMapCtrlShift( "u", "gE" )
+:call IMapCtrlShift( "i", "B" )
+:call IMapCtrlShift( "o", "E" )
+:call IMapCtrlShift( "p", "W" )
 " == Camel/Snake case word movement ==
 " noremap <F15>u <Plug>CamelCaseMotion_ge
 " noremap <F15>i <Plug>CamelCaseMotion_b
@@ -267,27 +534,27 @@ onoremap gl G
 
 " == Move to braces/parentheses ==
 "        alt moves to next open/close brace
-nnoremap <F15>] ]}
-nnoremap <F15>[ [{
+:call NMapAlt( "]", "]}" )
+:call NMapAlt( "[", "[{" )
 "        alt-shift moves to previous open/close brace
-nnoremap <F16>} ]{
-nnoremap <F16>{ [}
+:call NMapAltShift( "}", "]{" )
+:call NMapAltShift( "{", "[}" )
 "     == operator pending mappings ==
-onoremap <F15>] ]}
-onoremap <F16>} [}
-onoremap <F15>[ ]{
-onoremap <F16>{ [{
+:call OMapAlt( "]", "]}" )
+:call OMapAlt( "[", "[{" )
+:call OMapAltShift( "}", "]{" )
+:call OMapAltShift( "{", "[}" )
 "        alt moves to next open/close parenthesis
-nnoremap <F15>0 ])
-nnoremap <F15>9 ](
+:call NMapAlt( "0", "])" )
+:call NMapAlt( "9", "](" )
 "        alt-shift moves to previous open/close parenthesis
-nnoremap <F16>) [)
-nnoremap <F16>( [(
+:call NMapAltShift( ")", "[)" )
+:call NMapAltShift( "(", "[(" )
 "     == operator pending mappings ==
-onoremap <F15>0 ])
-onoremap <F15>9 ](
-onoremap <F16>) [)
-onoremap <F16>( [(
+:call OMapAlt( "0", "])" )
+:call OMapAlt( "9", "](" )
+:call OMapAltShift( ")", "[)" )
+:call OMapAltShift( "(", "[(" )
 
 "noremap <silent> <F15>o /}<CR>:noh<CR>
 "noremap <silent> <F15>p /{<CR>:noh<CR>
@@ -316,8 +583,8 @@ nnoremap <leader>l o
 nnoremap <leader>k O
 
 " == Prepend/Append newline to current line ==
-nnoremap <F19><spc>L myo<Esc>^D`y
-nnoremap <F19><spc>K myO<Esc>^D`y
+:call NMapShift( "<spc>L", "myo<Esc>^D`y" )
+:call NMapShift( "<spc>K", "myO<Esc>^D`y" )
 
 " == Bubble lines ==
 nnoremap <silent>  myV:move '<-2<CR><Esc>`y
