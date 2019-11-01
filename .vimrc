@@ -16,31 +16,48 @@ set sidescrolloff=20
 set nowrap
 set nosmarttab
 set inccommand=split
-"set cursorline
+set cursorline
+set t_Co=256
 
 " == Mapping functions ==
 "    == Shift ==
 function NMapShift( character, target )
-	if g:termcompatibility
-		exec ":nnoremap <F19>" . a:character . " " . a:target
-	else
-		exec ":nnoremap <S-" . a:character . "> " . a:target
-	endif
+if g:termcompatibility
+exec ":nnoremap <F19>" . a:character . " " . a:target
+else
+exec ":nnoremap <S-" . a:character . "> " . a:target
+endif
+endfunction
+
+function IMapShift( character, target )
+if g:termcompatibility
+exec ":inoremap <F19>" . a:character . " " . a:target
+else
+exec ":inoremap <S-" . a:character . "> " . a:target
+endif
+endfunction
+
+function CMapShift( character, target )
+if g:termcompatibility
+exec ":cnoremap <F19>" . a:character . " " . a:target
+else
+exec ":cnoremap <S-" . a:character . "> " . a:target
+endif
 endfunction
 
 "    == Ctrl ==
 function MapCtrl( character, target )
-	if g:termcompatibility
-		exec "inoremap <F13>" . a:character . " " . a:target
-	else
-		exec "inoremap <C-" . a:character . "> " . a:target
-	endif
+if g:termcompatibility
+exec "inoremap <F13>" . a:character . " " . a:target
+else
+exec "inoremap <C-" . a:character . "> " . a:target
+endif
 endfunction
 
 function IMapCtrl( character, target )
-	if g:termcompatibility
-		exec ":inoremap <F13>" . a:character . " " . a:target
-	else
+if g:termcompatibility
+exec ":inoremap <F13>" . a:character . " " . a:target
+else
 		exec ":inoremap <C-" . a:character . "> " . a:target
 	endif
 endfunction
@@ -286,6 +303,7 @@ inoremap <c-s> <Esc>:w<CR>a
 let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
 map <space>f <Plug>(easymotion-s)
+map <F10> <Plug>(easymotion-s)
 
 " == Reload .vimrc ==
 :call MapAlt( "<F15>r", ":source ~/.config/.vimrc<CR>" )
@@ -298,14 +316,62 @@ nnoremap  :tabclose<CR>
 noremap <M-Left>  :-tabmove<cr>
 noremap <M-Right> :+tabmove<cr>
 
+" fix tabs
+imap <F13><LTab> <C-Tab>
+cmap <F13><LTab> <C-Tab>
+xmap <F13><LTab> <C-Tab>
+omap <F13><LTab> <C-Tab>
+vmap <F13><LTab> <C-Tab>
+
+imap <F14><LTab> <C-S-Tab>
+cmap <F14><LTab> <C-S-Tab>
+xmap <F14><LTab> <C-S-Tab>
+omap <F14><LTab> <C-S-Tab>
+vmap <F14><LTab> <C-S-Tab>
+
+imap <F15><LTab> <M-Tab>
+cmap <F15><LTab> <M-Tab>
+xmap <F15><LTab> <M-Tab>
+omap <F15><LTab> <M-Tab>
+vmap <F15><LTab> <M-Tab>
+
+imap <F16><LTab> <M-S-Tab>
+cmap <F16><LTab> <M-S-Tab>
+xmap <F16><LTab> <M-S-Tab>
+omap <F16><LTab> <M-S-Tab>
+vmap <F16><LTab> <M-S-Tab>
+
+imap <F17><LTab> <C-M-Tab>
+cmap <F17><LTab> <C-M-Tab>
+xmap <F17><LTab> <C-M-Tab>
+omap <F17><LTab> <C-M-Tab>
+vmap <F17><LTab> <C-M-Tab>
+
+imap <F18><LTab> <C-M-S-Tab>
+cmap <F18><LTab> <C-M-S-Tab>
+xmap <F18><LTab> <C-M-S-Tab>
+omap <F18><LTab> <C-M-S-Tab>
+vmap <F18><LTab> <C-M-S-Tab>
+
+map <F19><LTab> <S-Tab>
+imap <F19><LTab> <S-Tab>
+cmap <F19><LTab> <S-Tab>
+xmap <F19><LTab> <S-Tab>
+omap <F19><LTab> <S-Tab>
+vmap <F19><LTab> <S-Tab>
+
+map <F13><CR> <C-CR>
+map <F13><spc> <C-Space>
+map <F13><BS> <C-BS>
+
 " == Nerd Tree ==
 nnoremap  :NERDTreeToggle<CR>
 
 " == Folding ==
 nnoremap z; zo
 nnoremap zj zc
-nnoremap zk zm
-nnoremap zl zr
+nnoremap zk zM
+nnoremap zl zR
 "nnoremap <F15>z<F15>; zO
 "nnoremap <F15>z<F15>j zC
 "nnoremap <F15>z<F15>k zM
@@ -321,12 +387,15 @@ nnoremap <c-s> :w<CR>
 " == Snippets for auto-formatting curly braces and parens ==
 "inoremap <F14>{ {<CR><Tab><CR>}<Esc>k_a<BS>
 :call IMapCtrlShift( "{", "{<CR><Tab><CR>}<Esc>k_a<BS>" )
+:call IMapCtrlShift( "}", "{<CR><Tab><CR>}<Esc>k_a<BS>" )
 :call IMapCtrlShift( "(", "(  )<Esc>hi" )
 :call IMapCtrlShift( ")", "(  )<Esc>hi" )
 
-" == Snippet to map alt-space to underscore
+" == Snippet to map alt-space and shift-space to underscore
 :call IMapAlt( "<spc>", "_" )
 :call CMapAlt( "<spc>", "_" )
+:call IMapShift( "<spc>", "_")
+:call CMapShift( "<spc>", "_")
 " == alt-. to "->"
 :call IMapAlt( ".", "->" )
 " == ctrl-space to " | "
@@ -399,10 +468,13 @@ noremap <c-v> :sp
 :call MapCtrlShift( "h", ":vsp<CR>" )
 :call MapCtrlShift( "v", ":sp<CR>" )
 "       ctrl focuses adjacent splits
-:call MapCtrl( "j", "<c-w>h" )
+" FIXME ctrl mappings not working for focusing splits, reverted to manual noremaps
+":call MapCtrl( "j", "<c-w>h" )
+noremap <F13>j <c-w>h
 noremap <c-k> <c-w>k
 noremap <c-l> <c-w>j
-:call MapCtrl( ";", "<c-w>l" )
+":call MapCtrl( ";", "<c-w>l" )
+noremap <F13>; <c-w>l
 "       ctrl-alt resizes
 :call MapCtrlAlt( "k", "<c-w>4-" )
 :call MapCtrlAlt( "l", "<c-w>4+" )
@@ -587,10 +659,10 @@ nnoremap <leader>k O
 :call NMapShift( "<spc>K", "myO<Esc>^D`y" )
 
 " == Bubble lines ==
-nnoremap <silent>  myV:move '<-2<CR><Esc>`y
-nnoremap <silent>  myV:move '>+1<CR><Esc>`y
-vnoremap <silent>  :move '<-2<CR><Esc>gv
-vnoremap <silent>  :move '>+1<CR><Esc>gv
+nnoremap <silent> <F15>k myV:move '<-2<CR><Esc>`y
+nnoremap <silent> <F15>l myV:move '>+1<CR><Esc>`y
+vnoremap <silent> <F15>k :move '<-2<CR><Esc>gv
+vnoremap <silent> <F15>l :move '>+1<CR><Esc>gv
 
 " == Repeat last action ==
 nnoremap a .
@@ -599,3 +671,18 @@ nnoremap a .
 "        maintain selection after indent/outdent
 vnoremap < <gv
 vnoremap > >gv
+
+" == Comment ==
+"omap <F13>/ c
+"nmap <F13>/ gc
+nmap <F17>/ n// ==========================================================================================================================================================kn 
+
+
+
+nn <silent> b :call CocActionAsync('doHover')<CR>
+"nmap b <Plug>(coc-definition)
+"nnoremap bj :call CocLocations('ccls','$ccls/navigate',{'direction':'U'})<CR>
+"nnoremap b; :call CocLocations('ccls','$ccls/navigate',{'direction':'D'})<CR>
+"nnoremap bk :call CocLocations('ccls','$ccls/navigate',{'direction':'L'})<CR>
+"nnoremap bl :call CocLocations('ccls','$ccls/navigate',{'direction':'R'})<CR>
+

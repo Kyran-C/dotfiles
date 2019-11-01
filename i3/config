@@ -50,6 +50,7 @@ floating_modifier Mod4
 # start a terminal
 #bindsym Mod4+Return exec tilix
 #bindsym Mod4+Shift+Return exec tilix --quake
+#bindsym Mod4+Return exec urxvtc -fn "xft:Hack Nerd Font Mono:pixelsize:8"
 bindsym Mod4+Return exec urxvtc
 bindsym Mod4+r exec urxvtc -e ranger
 
@@ -250,7 +251,7 @@ exec --no-startup-id twmnd
 #exec_always --no-startup-id feh --bg-center /home/kyran/Wallpapers/EclipseHighway.jpeg
 #exec_always --no-startup-id feh --bg-scale /home/kyran/Wallpapers/CyanMagenta.jpeg
 #exec_always --no-startup-id feh --bg-scale /home/kyran/Wallpapers/SunsetPowerlines.jpeg
-exec_always --no-startup-id feh --bg-scale /home/kyran/Wallpapers/wallhaven-299643.png
+exec_always --no-startup-id feh --bg-scale /home/kyran/dev/VMs/Arch/arch.jpg
 exec --no-startup-id pulseaudio --start
 exec --no-startup-id nm-applet
 exec --no-startup-id compton -f

@@ -21,6 +21,7 @@ rofi.matching: fuzzy
 Xft.dpi:        96
 Xft.antialias:  true
 Xft.rgba:       rgb
+!Xft.rgba:       none
 Xft.hinting:    true
 Xft.hintstyle:  hintfull
 
@@ -32,7 +33,16 @@ Xft.hintstyle:  hintfull
 !URxvt.256_color: true
 URxvt.iso14755 : false
 URxvt.iso14755_52 : false
-URxvt.font: xft:Anka/Coder Condensed:size=8:antialias=true
+!URxvt.font: xft:Anka/Coder Condensed:size=8:antialias=true
+!URxvt.font: xft:FiraCode Regular:size=8:antialias=true
+!URxvt.font: xft:FiraCode:size=8:antialias=true,xft:Symbola:size=8:antialias=true
+!URxvt.font: xft:Iosevka\ Term\ Medium\ Nerd\ Font\ Complete:size=8:antialias=true
+!URxvt*font: xft:Hack Nerd Font Mono:size=9
+!URxvt*font: xft:Iosevka Nerd Font Mono:pixelsize=12
+URxvt*font: xft:Iosevka Nerd Font:pixelsize=12
+URxvt*boldFont: xft:Iosevka Nerd Font Mono:style=Bold:pixelsize=12
+URxvt*italicFont: xft:Iosevka Nerd Font Mono:style=Italic:pixelsize=12
+URxvt.letterSpace: 2
 URxvt.meta8: false
 URxvt.modifier: alt
 URxvt.scrollBar: false
