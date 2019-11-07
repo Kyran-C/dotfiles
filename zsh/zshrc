@@ -118,7 +118,8 @@ bindkey -M visual 'sw' select-in-word
 bindkey -M visual 'sW' select-in-blank-word
  
 NEWLINE=$'\n'
-PS1="${NEWLINE}%F{246}%n:%m%f %F{250}%K{234} %~ %k%f ${NEWLINE} %F{130}➤%f  "
+CHEVRON=$'\uf054'
+PS1="${NEWLINE}%F{246}%n:%m%f %F{250}%K{234} %~ %k%f ${NEWLINE} %F{130}${CHEVRON}%f  "
 export VISUAL=/usr/bin/nvim
 export EDITOR="$VISUAL"
 export RANGER_LOAD_DEFAULT_RC=FALSE
