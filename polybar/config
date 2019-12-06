@@ -52,11 +52,11 @@ module-margin-left = 3
 module-margin-right = 3
 
 ;font-0 = fixed:pixelsize=8;1
-font-0 = YosemiteSanFranciscoFont:style:regular:size=7;2
+font-0 = YosemiteSanFranciscoFont:style:regular:size=12;2
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 ;font-2 = siji:pixelsize=10;1
 font-2 = DejaVu:pixelsize=10;1
-font-3 = FontAwesome:size=10;3
+font-3 = FontAwesome:size=14;3
 
 modules-left = powermenu i3 xwindow
 modules-center = 
@@ -64,7 +64,7 @@ modules-right = memory cpu temperature volume battery date
 
 tray-position = right
 tray-padding = 2
-tray-transparent = true
+;tray-transparent = true
 tray-background = ${colors.background}
 
 
